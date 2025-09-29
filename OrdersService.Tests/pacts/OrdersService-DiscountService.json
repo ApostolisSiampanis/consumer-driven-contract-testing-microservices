@@ -1,0 +1,35 @@
+{
+  "consumer": {
+    "name": "OrdersService"
+  },
+  "interactions": [
+    {
+      "description": "A GET request to retrieve discount for product 123",
+      "request": {
+        "method": "GET",
+        "path": "/api/discounts/123"
+      },
+      "response": {
+        "body": {
+          "percentage": 10
+        },
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pactRust": {
+      "ffi": "0.4.27",
+      "models": "1.2.8"
+    },
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  },
+  "provider": {
+    "name": "DiscountService"
+  }
+}

@@ -23,7 +23,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\DiscountService\DiscountService.csproj" />
         <ProjectReference Include="..\OrderSvc-Consumer\OrderSvc-Consumer.csproj" />
     </ItemGroup>
 

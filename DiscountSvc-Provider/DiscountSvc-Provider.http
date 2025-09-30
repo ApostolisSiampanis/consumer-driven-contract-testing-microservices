@@ -1,0 +1,6 @@
+@DiscountSvc_Provider_HostAddress = http://localhost:5001
+
+GET {{DiscountSvc_Provider_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

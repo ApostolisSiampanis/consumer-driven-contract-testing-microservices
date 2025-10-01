@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using PactNet;
 using PactNet.Verifier;
 using Xunit.Abstractions;
+using System.Linq;
 
 namespace ProviderTests;
 
@@ -15,44 +16,13 @@ public class DiscountServiceTests : IDisposable
 {
     private readonly ITestOutputHelper _output;
     private bool _disposed;
-    private readonly string _serviceUri;
+    private string _serviceUri;
     private IHost? _host;
 
     public DiscountServiceTests(ITestOutputHelper output)
     {
         _output = output;
         _serviceUri = "http://localhost:5001";
-
-        // Start a minimal provider host for verification
-        var builder = WebApplication.CreateBuilder();
-        builder.WebHost.UseUrls(_serviceUri);
-        // Configure JSON to use camelCase
-        builder.Services.ConfigureHttpJsonOptions(opts =>
-        {
-            opts.SerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
-            opts.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.Never;
-        });
-        var app = builder.Build();
-
-        app.MapPost("/discount", async (HttpContext ctx) =>
-        {
-            var model = await ctx.Request.ReadFromJsonAsync<DiscountModel>();
-            if (model == null)
-            {
-                ctx.Response.StatusCode = StatusCodes.Status400BadRequest;
-                return;
-            }
-            var amount = model.CustomerRating / 10.0;
-            var response = new DiscountModel
-            {
-                CustomerRating = model.CustomerRating,
-                AmountToDiscount = amount
-            };
-            await ctx.Response.WriteAsJsonAsync(response);
-        });
-
-        app.Start();
-        _host = app;
     }
 
     [Fact]

@@ -10,9 +10,10 @@ builder.Services.AddScoped<DiscountService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-// No HTTPS redirection because we run on plain HTTP in local dev
-// app.UseHttpsRedirection(); 
-// app.UseAuthorization(); // enable only if you use [Authorize]
+app.UseHttpsRedirection(); 
+app.UseAuthorization();
+app.MapControllers();
+app.UseRouting();
 
 // Minimal API endpoint replacing UseEndpoints + manual service resolution
 app.MapPost("/discount", (DiscountModel model, DiscountService svc) =>
@@ -24,8 +25,5 @@ app.MapPost("/discount", (DiscountModel model, DiscountService svc) =>
         AmountToDiscount = amount
     });
 });
-
-// Map controllers if any are present
-app.MapControllers();
 
 app.Run();

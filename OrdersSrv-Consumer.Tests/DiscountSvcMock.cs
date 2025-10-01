@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using PactNet;
+﻿using PactNet;
 
 namespace OrdersService.Tests;
 

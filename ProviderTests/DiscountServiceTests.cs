@@ -22,7 +22,7 @@ public class DiscountServiceTests : IDisposable
     public DiscountServiceTests(ITestOutputHelper output)
     {
         _output = output;
-        _serviceUri = "http://localhost:5001";
+        _serviceUri = "http://localhost:5100";
     }
 
     [Fact]

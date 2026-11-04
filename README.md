@@ -1,5 +1,12 @@
 # Consumer-Driven Contract Testing for Microservices
 
+## [University of Piraeus](https://www.unipi.gr/en/home/) | [Department of Informatics](https://cs.unipi.gr/en/)
+**MSc course**: Microservices - AI and Microservices
+
+**Semester**: 2
+
+**Project Completion Year**: 2025
+
 ## Project Overview
 
 This project demonstrates **consumer-driven contract testing** between two .NET microservices using [Pact](https://pact.io/) (PactNet). An **Orders** service (the consumer) depends on a **Discounts** service (the provider) to calculate a discount amount based on a customer's rating.
@@ -72,6 +79,9 @@ The repository also contains `OrdersService`, `DiscountService` and `DiscountSer
     ```
 
 If the provider's response no longer matches what the Orders service expects, step 4 fails and shows which part of the contract was broken.
+
+## Acknowledgments
+This project was developed as part of the "Microservices - AI and Microservices" MSc course at the University of Piraeus. Contributions and feedback are always welcome!
 
 ## License
 
